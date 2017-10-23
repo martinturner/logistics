@@ -15,6 +15,11 @@ ActiveRecord::Schema.define(version: 20171012140919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "is_calculates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "positions", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
@@ -23,6 +28,19 @@ ActiveRecord::Schema.define(version: 20171012140919) do
     t.date "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "totalDistance"
+    t.integer "isCalculate_id"
+  end
+
+  create_table "tires", force: :cascade do |t|
+    t.text "brand"
+    t.integer "start_distance"
+    t.integer "current_distance"
+    t.integer "total_distance"
+    t.text "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "vehicle_id"
   end
 
   create_table "tyres", force: :cascade do |t|
